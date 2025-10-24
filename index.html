@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Inventory Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>ផ្ទាំងគ្រប់គ្រងស្តុកសម្ភារៈឌីជីថល (Digital Inventory Dashboard)</h1>
+    </header>
+
+    <div id="loader-container">
+        <div class="loader"></div>
+        <p>កំពុងទាញទិន្នន័យ...</p>
+    </div>
+
+    <main id="dashboard-grid" class="hidden">
+
+        <section class="card total">
+            <h2><span class="icon">&#128200;</span> ទិន្ន័យសរុប (Total)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="total-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="total-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="total-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="total-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="total-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="total-headphone">0</span></div>
+            </div>
+        </section>
+
+        <section class="card in-use">
+            <h2><span class="icon">&#128187;</span> កំពុងប្រើប្រាស់ (In Use)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="in_use-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="in_use-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="in_use-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="in_use-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="in_use-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="in_use-headphone">0</span></div>
+            </div>
+        </section>
+
+        <section class="card unused">
+            <h2><span class="icon">&#128230;</span> មិនទាន់ប្រើ (Unused)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="unused-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="unused-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="unused-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="unused-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="unused-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="unused-headphone">0</span></div>
+            </div>
+        </section>
+
+        <section class="card damaged">
+            <h2><span class="icon">&#128683;</span> ខូច (Damaged)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="damaged-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="damaged-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="damaged-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="damaged-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="damaged-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="damaged-headphone">0</span></div>
+            </div>
+        </section>
+
+        <section class="card repairing">
+            <h2><span class="icon">&#128295;</span> ជួសជុល (Repairing)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="repairing-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="repairing-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="repairing-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="repairing-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="repairing-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="repairing-headphone">0</span></div>
+            </div>
+        </section>
+
+        <section class="card removed">
+            <h2><span class="icon">&#128465;</span> ដកចេញ (Removed)</h2>
+            <div class="item-list">
+                <div class="item"><span class="label">Mouse:</span><span class="value" id="removed-mouse">0</span></div>
+                <div class="item"><span class="label">Keyboard:</span><span class="value" id="removed-keyboard">0</span></div>
+                <div class="item"><span class="label">Mouse Pad:</span><span class="value" id="removed-mousepad">0</span></div>
+                <div class="item"><span class="label">Monitor:</span><span class="value" id="removed-monitor">0</span></div>
+                <div class="item"><span class="label">Case:</span><span class="value" id="removed-case">0</span></div>
+                <div class="item"><span class="label">Headphone:</span><span class="value" id="removed-headphone">0</span></div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
