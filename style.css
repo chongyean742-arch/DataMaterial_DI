@@ -1,0 +1,230 @@
+/* --- 0. FONT IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Hanuman:wght@400;700&display=swap');
+
+
+/* --- 1. GLOBAL SETUP & VARIABLES --- */
+:root {
+    --header-font: 'Roboto', 'Hanuman', 'Khmer OS Siemreap', sans-serif;
+    --body-font: 'Roboto', 'Hanuman', 'Khmer OS Siemreap', sans-serif;
+
+    /* Light Theme Palette */
+    --bg-color: #f4f7f6;      
+    --card-bg: #ffffff;       
+    --text-color: #333333;    
+    --text-light: #555555;    
+    
+    /* "Normal" Colors */
+    --color-total: #007bff;     
+    --color-in-use: #28a745;   
+    --color-unused: #6f42c1;   
+    --color-damaged: #dc3545;  
+    --color-repairing: #fd7e14; 
+    --color-removed: #6c757d;   
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--body-font); 
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+}
+
+/* --- 2. CORE LAYOUT --- */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-family: var(--header-font); 
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #222;
+}
+
+#dashboard-grid {
+    display: grid;
+    /* CHANGED: minmax(300px, 1fr) is safer for small phones 
+      than 320px. This helps it stack correctly.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* --- 3. LOADER & UTILITY CLASSES --- */
+#loader-container {
+    text-align: center;
+    padding-top: 100px;
+    color: var(--color-total);
+}
+
+.loader {
+    border: 8px solid #e0e0e0; 
+    border-top: 8px solid var(--color-total); 
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+    margin: 0 auto 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- 4. CARD COMPONENT (Structure & Base) --- */
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid; 
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    font-family: var(--header-font);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+    color: var(--text-color);
+}
+
+.card .icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+}
+
+/* --- 5. ITEM COMPONENT (Structure & Base) --- */
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fafafa;
+}
+
+.item .label {
+    font-weight: 400;
+    color: var(--text-light); 
+}
+
+.item .value {
+    font-family: var(--header-font); 
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+/* --- 6. THEME & COLORS (By Category) --- */
+
+/* Total (Blue) */
+.card.total { 
+    border-color: var(--color-total); 
+}
+.total .value { 
+    color: var(--color-total); 
+}
+
+/* In Use (Green) */
+.card.in-use { 
+    border-color: var(--color-in-use); 
+}
+.in-use .value { 
+    color: var(--color-in-use); 
+}
+
+/* Unused (Violet) */
+.card.unused { 
+    border-color: var(--color-unused); 
+}
+.unused .value { 
+    color: var(--color-unused); 
+}
+
+/* Damaged (Red) */
+.card.damaged { 
+    border-color: var(--color-damaged); 
+}
+.damaged .value { 
+    color: var(--color-damaged); 
+}
+
+/* Repairing (Orange) */
+.card.repairing { 
+    border-color: var(--color-repairing); 
+}
+.repairing .value { 
+    color: var(--color-repairing); 
+}
+
+/* Removed (Gray) */
+.card.removed { 
+    border-color: var(--color-removed); 
+}
+.removed .value { 
+    color: var(--color-removed); 
+}
+
+
+/* --- 7. NEW: RESPONSIVE (For Phones) --- 
+   This code runs only on screens 600px wide or smaller
+*/
+@media (max-width: 600px) {
+    
+    body {
+        /* Reduce padding to give more space */
+        padding: 15px;
+    }
+
+    header h1 {
+        /* Make main title smaller */
+        font-size: 1.8rem; 
+    }
+
+    .card h2 {
+        /* Make card titles smaller */
+        font-size: 1.3rem;
+    }
+
+    .item .value {
+        /* Make numbers smaller */
+        font-size: 1.5rem;
+    }
+
+    .item .label {
+        font-size: 1rem;
+    }
+
+    #dashboard-grid {
+        /* Reduce the gap between cards */
+        gap: 20px;
+    }
+}
